@@ -20,9 +20,17 @@ void loop() {
   sensors_event_t event;
   accel.getEvent(&event);
 
-  Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print(" m/s^2 ");
-  Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print(" m/s^2 ");
-  Serial.print("Z: "); Serial.print(event.acceleration.z); Serial.println(" m/s^2 ");
+  float x = event.acceleration.x;
+  float y = event.acceleration.y;
+  float z = event.acceleration.z;
 
-  delay(500);
+  // Calculate pitch and roll
+  float pitch = atan2(-x, sqrt(y * y + z * z)) * 180 / PI;
+  float roll = atan2(y, z) * 180 / PI;
+
+  // Send data to Node.js
+  Serial.print(pitch); Serial.print(","); Serial.println(roll);
+
+  delay(200);
+
 }

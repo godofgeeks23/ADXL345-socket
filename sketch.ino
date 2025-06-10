@@ -3,6 +3,9 @@
 #include <Adafruit_ADXL345_U.h>
 
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
+float smoothPitch = 0;
+float smoothRoll = 0;
+const float alpha = 0.1; // 0 < alpha <= 1, smaller = smoother
 
 void setup() {
   Serial.begin(9600);
@@ -28,9 +31,13 @@ void loop() {
   float pitch = atan2(-x, sqrt(y * y + z * z)) * 180 / PI;
   float roll = atan2(y, z) * 180 / PI;
 
-  // Send data to Node.js
-  Serial.print(pitch); Serial.print(","); Serial.println(roll);
+  // Apply smoothing
+  smoothPitch = (1 - alpha) * smoothPitch + alpha * pitch;
+  smoothRoll  = (1 - alpha) * smoothRoll  + alpha * roll;
 
-  delay(200);
+  Serial.print(smoothPitch);
+  Serial.print(",");
+  Serial.println(smoothRoll);
+  delay(10);
 
 }

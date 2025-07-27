@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/5b6d544a-e793-412c-978e-823499305a66
 
 🧰 Tech Stack
 
-- Arduino with ADXL345
+- Arduino (Uno) with ADXL345
 
 - Node.js with:
     - Express (API & web server)

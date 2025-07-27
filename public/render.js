@@ -52,7 +52,7 @@ const createArm = (x, z) => {
   return arm;
 };
 
-const arm1 = createArm(0, 0);  // shared arm
+const arm1 = createArm(0, 0); // shared arm
 arm1.rotation.z = Math.PI / 4;
 drone.add(arm1);
 
@@ -91,7 +91,7 @@ positions.forEach(([x, z]) => {
 
 // === Propeller Animation ===
 function animatePropellers() {
-  propellers.forEach(p => {
+  propellers.forEach((p) => {
     p.rotation.y += 0.6;
   });
 }

@@ -11,6 +11,10 @@ A real-time 3D visualization tool for accelerometer data from the ADXL345 sensor
 - Displays 3D orientation using Three.js
 - Data smoothing using alpha blending
 
+Todo - 
+ 
+- Implementation for MPU6050 
+
 ## Demo - 
 
 https://github.com/user-attachments/assets/fb045dfb-5d15-4d08-8039-6a8b22e64d7c
